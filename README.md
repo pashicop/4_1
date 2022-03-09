@@ -84,8 +84,112 @@ vagrant@vagrant:~/bash$ cat log
 vagrant@vagrant:~/bash$
 ```
 # 4
-
-
+Изменил скрипт
+```
+vagrant@vagrant:~/bash$ cat 3.sh
+#!/usr/bin/env bash
+#ip_1=192.168.0.1
+#ip_2=173.194.222.113
+#ip_3=87.250.250.242
+echo "Start log" > log
+echo "" > error
+array=( "173.194.222.113" "87.250.250.242" "10.1.4.81")
+while (( 1==1 ))
+do
+        for n in ${array[@]}
+        do
+                nc -zvw3 $n 80
+                if (($? != 0))
+                then
+                        echo "$n порт 80 НЕДОСТУПЕН!" >> log
+                        echo "$n" > error
+                        exit
+                else
+                        echo "$n порт 80 ДОСТУПЕН!" >> log
+                        sleep 3
+                fi
+        done
+done
+exit
+vagrant@vagrant:~/bash$ vagrant@vagrant:~/bash$ ./3.sh
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+Connection to 10.1.4.81 80 port [tcp/http] succeeded!
+Connection to 173.194.222.113 80 port [tcp/http] succeeded!
+Connection to 87.250.250.242 80 port [tcp/http] succeeded!
+nc: connect to 10.1.4.81 port 80 (tcp) timed out: Operation now in progress
+vagrant@vagrant:~/bash$ cat log
+Start log
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 ДОСТУПЕН!
+173.194.222.113 порт 80 ДОСТУПЕН!
+87.250.250.242 порт 80 ДОСТУПЕН!
+10.1.4.81 порт 80 НЕДОСТУПЕН!
+vagrant@vagrant:~/bash$ cat error
+10.1.4.81
+vagrant@vagrant:~/bash$
+```
 
 
 
